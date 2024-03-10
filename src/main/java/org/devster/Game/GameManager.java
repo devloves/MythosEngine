@@ -10,10 +10,16 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
+/**
+ * The type Game manager.
+ */
 public class GameManager extends AbstractGameTest {
 
 	private ImageTile sprite;
 
+	/**
+	 * Instantiates a new Game manager.
+	 */
 	public GameManager() {
 		this.sprite = new ImageTile("/testtile.png", 16, 16);
 	}
@@ -29,6 +35,9 @@ public class GameManager extends AbstractGameTest {
 		}
 	}
 
+	/**
+	 * The Temp.
+	 */
 	float temp;
 
 	@Override
@@ -36,6 +45,11 @@ public class GameManager extends AbstractGameTest {
 		r.drawImageTile(sprite, mm.getInputHandler().getMouseX() - 8, mm.getInputHandler().getMouseY() - 16, (int)temp, 0);
 	}
 
+	/**
+	 * The entry point of application.
+	 *
+	 * @param args the input arguments
+	 */
 	public static void main(String[] args) {
 		mythosMain mm = new mythosMain(new GameManager());
 		mm.engineStart();
