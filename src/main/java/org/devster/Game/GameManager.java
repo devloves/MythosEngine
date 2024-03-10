@@ -1,6 +1,7 @@
 package org.devster.Game;
 
 import org.devster.AbstractGameTest;
+import org.devster.audio.SoundClip;
 import org.devster.graphics.ImageSprite;
 import org.devster.graphics.ImageTile;
 import org.devster.mythosMain;
@@ -16,12 +17,14 @@ import java.awt.event.KeyEvent;
 public class GameManager extends AbstractGameTest {
 
 	private ImageTile sprite;
+	private SoundClip shootSound;
 
 	/**
 	 * Instantiates a new Game manager.
 	 */
 	public GameManager() {
 		this.sprite = new ImageTile("/testtile.png", 16, 16);
+		this.shootSound = new SoundClip("/test.wav");
 	}
 
 	@Override
@@ -42,6 +45,9 @@ public class GameManager extends AbstractGameTest {
 
 	@Override
 	public void render(mythosMain mm, mythosRenderer r) {
+		if(mm.getInputHandler().isKeyDown(KeyEvent.VK_E)) {
+			shootSound.play();
+		}
 		r.drawImageTile(sprite, mm.getInputHandler().getMouseX() - 8, mm.getInputHandler().getMouseY() - 16, (int)temp, 0);
 	}
 
