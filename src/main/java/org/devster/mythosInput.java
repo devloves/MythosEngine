@@ -2,6 +2,9 @@ package org.devster;
 
 import java.awt.event.*;
 
+/**
+ * The type Mythos input.
+ */
 public class mythosInput implements KeyListener, MouseListener, MouseWheelListener, MouseMotionListener {
 
 	private final int NUM_KEYS = 256;
@@ -16,6 +19,11 @@ public class mythosInput implements KeyListener, MouseListener, MouseWheelListen
 	private int scroll;
 	private mythosMain em;
 
+	/**
+	 * Instantiates a new Mythos input.
+	 *
+	 * @param main the main
+	 */
 	public mythosInput(mythosMain main) {
 		this.em = main;
 		mouseX = 0;
@@ -28,6 +36,9 @@ public class mythosInput implements KeyListener, MouseListener, MouseWheelListen
 		em.getWindow().getCanvas().addMouseWheelListener(this);
 	}
 
+	/**
+	 * Update.
+	 */
 	public void update() {
 		for (int i = 0; i < NUM_KEYS; i ++) {
 			keysLast[i] = keys[i];
@@ -37,26 +48,62 @@ public class mythosInput implements KeyListener, MouseListener, MouseWheelListen
 		}
 	}
 
+	/**
+	 * Is key boolean.
+	 *
+	 * @param keyCode the key code
+	 * @return the boolean
+	 */
 	public boolean isKey(int keyCode) {
 		return keys[keyCode];
 	}
 
+	/**
+	 * Is key up boolean.
+	 *
+	 * @param keyCode the key code
+	 * @return the boolean
+	 */
 	public boolean isKeyUp(int keyCode) {
 		return !keys[keyCode] && keysLast[keyCode];
 	}
 
+	/**
+	 * Is key down boolean.
+	 *
+	 * @param keyCode the key code
+	 * @return the boolean
+	 */
 	public boolean isKeyDown(int keyCode) {
 		return keys[keyCode] && !keysLast[keyCode];
 	}
 
+	/**
+	 * Is button boolean.
+	 *
+	 * @param button the button
+	 * @return the boolean
+	 */
 	public boolean isButton(int button) {
 		return buttons[button];
 	}
 
+	/**
+	 * Is button up boolean.
+	 *
+	 * @param button the button
+	 * @return the boolean
+	 */
 	public boolean isButtonUp(int button) {
 		return !buttons[button] && buttonsLast[button];
 	}
 
+	/**
+	 * Is button down boolean.
+	 *
+	 * @param button the button
+	 * @return the boolean
+	 */
 	public boolean isButtonDown(int button) {
 		return buttons[button] && !buttonsLast[button];
 	}
@@ -118,18 +165,38 @@ public class mythosInput implements KeyListener, MouseListener, MouseWheelListen
 		scroll = e.getWheelRotation();
 	}
 
+	/**
+	 * Gets num keys.
+	 *
+	 * @return the num keys
+	 */
 	public int getNUM_KEYS() {
 		return NUM_KEYS;
 	}
 
+	/**
+	 * Gets mouse x.
+	 *
+	 * @return the mouse x
+	 */
 	public int getMouseX() {
 		return mouseX;
 	}
 
+	/**
+	 * Gets mouse y.
+	 *
+	 * @return the mouse y
+	 */
 	public int getMouseY() {
 		return mouseY;
 	}
 
+	/**
+	 * Gets scroll.
+	 *
+	 * @return the scroll
+	 */
 	public int getScroll() {
 		return scroll;
 	}

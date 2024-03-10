@@ -3,22 +3,35 @@ package org.devster;
 import org.devster.graphics.FontAdder;
 import org.devster.graphics.ImageSprite;
 import org.devster.graphics.ImageTile;
-
-import java.awt.*;
 import java.awt.image.DataBufferInt;
 import java.util.Arrays;
 
+/**
+ * The type Mythos renderer.
+ */
 public class mythosRenderer {
 	private int pW, pH; // Stands for Pixel Width and Pixel Height
 	private int[] p;
 	private FontAdder font = FontAdder.STANDARD;
 
+	/**
+	 * Instantiates a new Mythos renderer.
+	 *
+	 * @param em the em
+	 */
 	public mythosRenderer(mythosMain em) {
 		pW = em.getWidth();
 		pH = em.getHeight();
 		p = ((DataBufferInt)em.getWindow().getImage().getRaster().getDataBuffer()).getData();
 	}
 
+	/**
+	 * Sets pixel.
+	 *
+	 * @param x     the x
+	 * @param y     the y
+	 * @param value the value
+	 */
 	public void setPixel(int x, int y, int value) {
 		if(x < 0 || x >= pW || y < 0 || y >= pH || value == 0xffff00ff) {
 			return;
@@ -27,6 +40,13 @@ public class mythosRenderer {
 		p[x + y * pW] = value;
 	}
 
+	/**
+	 * Draw image.
+	 *
+	 * @param image the image
+	 * @param offX  the off x
+	 * @param offY  the off y
+	 */
 	public void drawImage(ImageSprite image, int offX, int offY) {
 		// Don't Render Code
 		if(offX < -image.getW()) return;
@@ -54,6 +74,14 @@ public class mythosRenderer {
 		}
 	}
 
+	/**
+	 * Draw text.
+	 *
+	 * @param text  the text
+	 * @param offX  the off x
+	 * @param offY  the off y
+	 * @param color the color
+	 */
 	public void drawText(String text, int offX, int offY, int color) {
 		ImageSprite fontImage = font.getFontImage();
 		text = text.toUpperCase(); // Change if your font is Lowercase
@@ -72,6 +100,15 @@ public class mythosRenderer {
 
 	}
 
+	/**
+	 * Draw image tile.
+	 *
+	 * @param image the image
+	 * @param offX  the off x
+	 * @param offY  the off y
+	 * @param tileX the tile x
+	 * @param tileY the tile y
+	 */
 	public void drawImageTile(ImageTile image, int offX, int offY, int tileX, int tileY) {
 		// Don't Render Code
 		if(offX < -image.getTileW()) return;
@@ -99,6 +136,9 @@ public class mythosRenderer {
 		}
 	}
 
+	/**
+	 * Clear.
+	 */
 	public void clear() {
 		Arrays.fill(p, 0);
 	}
