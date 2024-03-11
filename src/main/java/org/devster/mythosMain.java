@@ -85,8 +85,8 @@ public class mythosMain implements Runnable {
 				//TODO: Render Game.
 				window.update();
 				renderer.clear();
-				renderer.drawText("FPS: " + fps, 0, 0, 0xff00ffff);
 				game.render(this, renderer);
+				renderer.drawText("FPS: " + fps, 0, 0, 0xff00ffff);
 				frames++;
 
 			} else {

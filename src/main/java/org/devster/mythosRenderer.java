@@ -3,8 +3,13 @@ package org.devster;
 import org.devster.graphics.FontAdder;
 import org.devster.graphics.ImageSprite;
 import org.devster.graphics.ImageTile;
+import org.devster.graphics.Tilemap;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * The type Mythos renderer.
@@ -132,6 +137,26 @@ public class mythosRenderer {
 		{
 			for(int x = newX; x < newWidth; x++){
 				setPixel(x + offX, y + offY, image.getP()[(x + tileX * image.getTileW()) + (y + tileY * image.getTileH()) * image.getW()]);
+			}
+		}
+	}
+
+	public void drawTilemap(Tilemap tilemap, List<Integer> tileMapData, int tileSize, int tilemapWidthInPixels, int cameraX, int cameraY) {
+		int tilemapWidthInTiles = tilemapWidthInPixels / tileSize;
+		for (int i = 0; i < tileMapData.size(); i++) {
+			int tileId = tileMapData.get(i);
+			ImageSprite tileTexture = tilemap.getTileTexture(tileId);
+			if (tileTexture != null) {
+				// Calculate x and y positions based on the total width of the tilemap
+				int x = i % tilemapWidthInTiles;
+				int y = i / tilemapWidthInTiles;
+				for (int ty = 0; ty < tileSize; ty++) {
+					for (int tx = 0; tx < tileSize; tx++) {
+						int pixel = tileTexture.getP()[tx + ty * tileSize];
+						// Adjust for camera position
+						setPixel((x * tileSize + tx) - cameraX, (y * tileSize + ty) - cameraY, pixel);
+					}
+				}
 			}
 		}
 	}
