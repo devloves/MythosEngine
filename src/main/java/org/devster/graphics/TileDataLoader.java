@@ -4,7 +4,17 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Tile data loader.
+ */
 public class TileDataLoader {
+	/**
+	 * Load tile map list.
+	 *
+	 * @param fileName the file name
+	 * @return the list
+	 * @throws IOException the io exception
+	 */
 	public static List<Integer> loadTileMap(String fileName) throws IOException {
 		List<Integer> tileMapData = new ArrayList<>();
 		InputStream is = TileDataLoader.class.getClassLoader().getResourceAsStream(fileName);

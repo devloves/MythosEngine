@@ -141,6 +141,16 @@ public class mythosRenderer {
 		}
 	}
 
+	/**
+	 * Draw tilemap.
+	 *
+	 * @param tilemap              the tilemap
+	 * @param tileMapData          the tile map data
+	 * @param tileSize             the tile size
+	 * @param tilemapWidthInPixels the tilemap width in pixels
+	 * @param cameraX              the camera x
+	 * @param cameraY              the camera y
+	 */
 	public void drawTilemap(Tilemap tilemap, List<Integer> tileMapData, int tileSize, int tilemapWidthInPixels, int cameraX, int cameraY) {
 		int tilemapWidthInTiles = tilemapWidthInPixels / tileSize;
 		for (int i = 0; i < tileMapData.size(); i++) {

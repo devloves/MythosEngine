@@ -28,12 +28,32 @@ public class GameManager extends AbstractGameTest {
 	private List<Integer> tilemapData;
 
 	private Camera camera;
+
+	/**
+	 * The enum Movement.
+	 */
 	enum Movement {
+		/**
+		 * Left movement.
+		 */
 		LEFT,
+		/**
+		 * Right movement.
+		 */
 		RIGHT,
+		/**
+		 * Up movement.
+		 */
 		UP,
+		/**
+		 * Down movement.
+		 */
 		DOWN
 	}
+
+	/**
+	 * The Current.
+	 */
 	Movement current = null;
 
 	/**
@@ -45,8 +65,10 @@ public class GameManager extends AbstractGameTest {
 		this.camera = new Camera(0, 0);
 		ImageSprite grassTexture = new ImageSprite("/grass.png");
 		ImageSprite stoneTexture = new ImageSprite("/stone.png");
+		ImageSprite sandTexture = new ImageSprite("/sand.png");
 		tilemap.addTileTexture(0, grassTexture);
 		tilemap.addTileTexture(1, stoneTexture);
+		tilemap.addTileTexture(2, sandTexture);
 		this.current = Movement.UP;
 		try {
 			this.tilemapData = TileDataLoader.loadTileMap("map.txt");
@@ -90,6 +112,9 @@ public class GameManager extends AbstractGameTest {
 	 * The Temp.
 	 */
 	float temp;
+	/**
+	 * The Temp tile.
+	 */
 	int tempTile;
 
 	@Override

@@ -1,6 +1,7 @@
 package org.devster;
 
 import java.lang.System;
+
 /**
  * The main class for the MythosEngine.
  */
@@ -12,6 +13,9 @@ public class mythosMain implements Runnable {
 	private mythosInput inputHandler;
 	private final double UPDATE_CAP = 1.0/60.0;
 	private boolean running = false;
+	/**
+	 * The Render.
+	 */
 	boolean render = false;
 	private int width = 360, height = 240;
 	private float scale = 3F;
@@ -29,7 +33,7 @@ public class mythosMain implements Runnable {
 	}
 
 	/**
-	 *  Starts the engine.
+	 * Starts the engine.
 	 */
 	public void engineStart() {
 		window = new mythosWindow(this); // Window for rendering
